@@ -10,7 +10,7 @@ import { Question, UserProfile, UserAnswer, TriviaSet, TimeFrame } from '@/types
 import { getTodaysQuestions, getMockUserProfile, getMockLeaderboard, submitAnswers } from '@/services/mockData';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowDown, ArrowUp, Check, Trophy } from 'lucide-react';
+import { ArrowDown, ArrowUp, Check, Trophy, Share2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { formatTimeLeft, hasPlayedToday } from '@/utils/dateUtils';
 
