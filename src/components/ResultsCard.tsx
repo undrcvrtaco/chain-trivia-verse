@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Share2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Progress } from '@/components/ui/progress';
@@ -30,21 +29,19 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
   const isPerfectScore = correct === total;
 
   return (
-    <Card className={cn(
-      "w-full max-w-lg bg-trivia-background/90 border-trivia-primary/30",
-      "animate-fade-in"
-    )}>
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-bold">
+    <div className="w-full max-w-lg bg-white rounded-3xl shadow p-6 animate-fade-in">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-bold">
           {isPerfectScore ? 'Perfect Score!' : 'Quiz Complete!'}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-6">
+        </h2>
+      </div>
+      
+      <div className="space-y-6">
         <div className="text-center">
-          <div className="text-4xl font-bold trivia-gradient">
+          <div className="text-4xl font-bold">
             {correct}/{total}
           </div>
-          <div className="text-sm text-muted-foreground mt-1">
+          <div className="text-sm text-gray-500 mt-1">
             {isPerfectScore 
               ? 'Amazing job! You got all questions right!' 
               : `You answered ${percentage}% of questions correctly.`}
@@ -59,42 +56,43 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
           <Progress value={percentage} className="h-2" />
         </div>
 
-        <div className="flex items-center justify-center space-x-3 p-3 bg-trivia-primary/10 rounded-lg">
+        <div className="flex items-center justify-center space-x-3 p-3 rounded-lg">
           <div className="flex-1 text-center">
-            <div className="text-3xl font-bold text-trivia-primary">{streak}</div>
-            <div className="text-xs text-muted-foreground">Day Streak</div>
+            <div className="text-3xl font-bold text-primary">{streak}</div>
+            <div className="text-xs text-gray-500">Day Streak</div>
           </div>
           {isPerfectScore && (
             <div className="flex-1 text-center">
-              <div className="w-12 h-12 mx-auto rounded-full border-4 border-trivia-accent flex items-center justify-center">
-                <Check className="w-6 h-6 text-trivia-accent" />
+              <div className="w-12 h-12 mx-auto rounded-full border-4 border-green-500 flex items-center justify-center">
+                <Check className="w-6 h-6 text-green-500" />
               </div>
-              <div className="text-xs text-trivia-accent mt-1">Perfect Score Badge</div>
+              <div className="text-xs text-green-500 mt-1">Perfect Score Badge</div>
             </div>
           )}
         </div>
 
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="text-center text-sm text-gray-500">
           Next trivia in <span className="font-semibold">{nextTriviaTime}</span>
         </div>
-      </CardContent>
-      <CardFooter className="flex justify-between gap-4">
+      </div>
+      
+      <div className="flex justify-between gap-4 mt-6">
         <Button 
           variant="outline" 
-          className="flex-1 border-trivia-primary/30 text-trivia-primary hover:text-trivia-light hover:bg-trivia-primary/20"
+          className="flex-1 border-gray-300 text-gray-700"
           onClick={onShare}
         >
           <Share2 className="h-4 w-4 mr-2" />
           Share Result
         </Button>
         <Button 
-          className="flex-1 bg-trivia-primary hover:bg-trivia-primary/90"
+          className="flex-1 bg-primary hover:bg-primary/90"
           onClick={onDismiss}
         >
           Done
         </Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };
 
